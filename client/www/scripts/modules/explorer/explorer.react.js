@@ -57,7 +57,7 @@ var ExploreModelApiEndPointListItem = (ExploreModelApiEndPointListItem = React).
     };
   },
   getNameFromPath: function(resource) {
-    var rawPath = resource.path;
+    var rawPath = resource.resourcePath;
     var parts = rawPath.split("/");
     var returnPath = parts[(parts.length - 1)];
 
