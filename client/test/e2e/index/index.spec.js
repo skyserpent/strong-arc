@@ -3,7 +3,7 @@ describe('hello-protractor', function() {
 
   describe('index', function() {
     it('should display the correct title', function() {
-      ptor.get('http://localhost:49491/#/studio');
+      ptor.get('http://localhost:9800/#/studio');
       expect(ptor.getTitle()).toBe('StrongLoop Studio Beta');
     });
   });
@@ -18,7 +18,7 @@ describe('go-to-login', function() {
 
   describe('index', function() {
     it('should display the correct title', function() {
-      ptor.get('http://localhost:49491/#/');
+      ptor.get('http://localhost:9800/#/');
 
       element(by.id('SplashLoginLink')).click();
 
@@ -40,7 +40,7 @@ describe('go-to-login', function() {
 
       // Composer Home
       var composerHomeView = new ComposerHomeView();
-      expect(composerHomeView.projectTitleContainer.getText()).toEqual('TESTAPPSEVEN');
+      expect(composerHomeView.projectTitleContainer.getText()).toEqual('EMPTY');
       composerHomeView.addModelButton.click();
 
 
@@ -70,13 +70,13 @@ describe('go-to-login', function() {
               break;
             }
           }
-          var row = element.all(by.css('.branch-leaf-list [data-ui-type="row"]')).get(index);
-          browser.debugger();
-          var el2 = row(by.css('.nav-tree-item-header'));
-          expect(el2.getText().toEqual('mynewmodel'));
 
 
       });
+      var row = element.all(by.css('.branch-leaf-list [data-ui-type="row"]')).get(index);
+//          browser.debugger();
+          var el2 = row(by.css('.nav-tree-item-header'));
+//          expect(el2.getText().toEqual('mynewmodel'));
 
 
     });

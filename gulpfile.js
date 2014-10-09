@@ -23,7 +23,7 @@ gulp.task('build', [
     'build-less-devtools',
     'build-version',
     'build-workspace-services',
-    'install-example-modules',
+    'install-example-modules'
 ]);
 
 gulp.task('build-less', function() {
@@ -109,13 +109,13 @@ gulp.task('test-client-integration', function(callback) {
   var child = spawn(
     process.execPath,
     [
-      'client/test/integration/test-server',
+      'client/test/test-server',
       'node_modules/.bin/karma',
       'start',
       '--single-run',
       '--browsers',
       'PhantomJS',
-      'client/test/integration/karma.integration.js',
+      'client/test/integration/karma.integration.js'
     ],
     {
       cwd: __dirname,
@@ -132,7 +132,33 @@ gulp.task('test-client-integration', function(callback) {
       callback();
   });
 });
+gulp.task('test-client-e2e', function(callback) {
+  var child = spawn(
+    process.execPath,
+    [
+      'client/test/test-server',
+      'node_modules/.bin/protractor',
+      'start',
+      '--single-run',
+      '--browsers',
+      'PhantomJS',
+      'client/test/integration/karma.integration.js'
+    ],
+    {
+      cwd: __dirname,
+      stdio: 'inherit'
+    });
 
+  child.on('error', function(err) {
+    callback(err);
+  });
+  child.on('exit', function(code) {
+    if (code)
+      callback(new Error('Failed with exit code ' + code));
+    else
+      callback();
+  });
+});
 gulp.task('setup-mysql', function(callback) {
   var ROOT_PASSWORD = process.env.MYSQL_ROOT_PWD || '';
   setupMysql(ROOT_PASSWORD, function(err) {
