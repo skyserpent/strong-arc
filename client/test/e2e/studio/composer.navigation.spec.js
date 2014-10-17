@@ -1,43 +1,21 @@
-var StudioHeaderView = require('../studio/views/studio-header-view');
-var LoginView = require('../studio/views/login-view');
-var LandingView = require('../studio/views/landing-view');
-
-var ComposerHomeView = require('../composer/views/composer-home-view');
-
+var StudioViews = require('../studio/views/');
+var ComposerViews = require('../composer/views/');
 
 describe('composer-navigation', function() {
   it('should login and navigation to API Composer view and log out', function() {
 
-    var ptor = protractor.getInstance();
+    var loginView = new StudioViews.LoginView();
+    var landingView = new StudioViews.LandingView();
+    var composerHomeView = new ComposerViews.ComposerHomeView();
+    var headerView = new StudioViews.HeaderView();
 
-    ptor.get('http://127.0.0.1:9800/#/login');
-    //      // Login View
-    var loginView = new LoginView();
+    loginView.loginToLandingView();
 
-    expect(loginView.userNameInput.getText()).toEqual('');
+    landingView.openComposerView();
 
-    loginView.userNameInput.sendKeys('strongloop-test@grr.la');
-    loginView.passwordInput.sendKeys('Str0ngL00p');
-
-    loginView.submitButton.click();
-
-    // Landing View
-    var landingView = new LandingView();
-    expect(landingView.landingTitle.getText()).toEqual('StrongLoop Studio');
-
-    landingView.composerAppCommand.click();
-
-
-    // Composer Home
-    var composerHomeView = new ComposerHomeView();
     expect(composerHomeView.projectTitleContainer.getText()).toEqual('EMPTY');
 
-
-    var studioHeaderView = new StudioHeaderView();
-
-    studioHeaderView.accountDropdown.click();
-    studioHeaderView.logoutLink.click();
-
+    headerView.logout();
 
   });
 
