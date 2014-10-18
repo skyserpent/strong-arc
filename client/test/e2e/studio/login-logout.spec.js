@@ -9,7 +9,7 @@ describe('studio-login-logout', function() {
 
     loginView.openLoginView();
 
-    expect(loginView.userNameInput.getText()).toEqual('');
+    expect(loginView.userNameInput.getAttribute('value')).toEqual('');
 
     loginView.loginAsTestUser();
 
@@ -17,7 +17,7 @@ describe('studio-login-logout', function() {
 
     headerView.logout();
 
-    expect(loginView.userNameInput.getText()).toEqual('');
+    expect(loginView.userNameInput.getAttribute('value')).toEqual('');
 
   });
 

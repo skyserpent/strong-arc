@@ -379,7 +379,7 @@ var ModelPropertiesEditor = (ModelPropertiesEditor = React).createClass({
             <ul className="model-instance-property-list">
             {items}
             </ul>
-            <button title="New Property" type="button" onClick={component.triggerNewPropertyEditor} className="btn-new-model-property" >New Property</button>          </div>
+            <button title="New Property" type="button" onClick={component.triggerNewPropertyEditor} className="btn-new-model-property" data-id="AddNewPropertyButton">New Property</button>          </div>
         </div>
       );
     }
