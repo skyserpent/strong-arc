@@ -453,18 +453,7 @@ var IAMainControls = (IAMainControls = React).createClass({
       isAppRunning: !nextProps.scope.isAppRunning
     });
   },
-  startRestartApp: function() {
-    var component = this;
-    component.props.scope.$apply(function() {
-      component.props.scope.startRestartApp();
-    });
-  },
-  stopApp: function() {
-    var component = this;
-    component.props.scope.$apply(function() {
-      component.props.scope.stopApp();
-    });
-  },
+
   render: function() {
     var component = this;
     var scope = component.props.scope;
@@ -478,14 +467,7 @@ var IAMainControls = (IAMainControls = React).createClass({
 
     };
 
-    var startAppIconClass = cx({
-      'maincontrol-main-icon  sl-icon sl-icon-play': !scope.isAppRunning,
-      'maincontrol-main-icon  sl-icon sl-icon-restart': scope.isAppRunning
-    });
-    var startAppButtonTitleText = 'Start App';
-    if (scope.isAppRunning) {
-      startAppButtonTitleText = 'Restart App';
-    }
+
 
     var addNewInstanceRequest = function(event) {
       if (event.target.attributes['data-type'] || event.target.parentElement.attributes['data-type']){
@@ -525,14 +507,6 @@ var IAMainControls = (IAMainControls = React).createClass({
               </div>
               <div data-ui-type="cell" className="main-control-apprender-container">
                 <label className="main-control-command-label">APP</label>
-                <div data-id="StartStopAppControlsContainer">
-                  <button disabled={component.state.isAppRunning} onClick={component.stopApp} title="Stop App" type="button" className="btn btn-primary btn-halfsize">
-                    <span className="maincontrol-main-icon sl-icon sl-icon-stop"></span>
-                  </button>
-                  <button onClick={component.startRestartApp} type="button" title={startAppButtonTitleText} className="btn btn-primary btn-halfsize">
-                    <span className={startAppIconClass}></span>
-                  </button>
-                </div>
               </div>
             </div>
           </div>
@@ -600,3 +574,4 @@ var IAMainControls = (IAMainControls = React).createClass({
       );
   }
 });
+

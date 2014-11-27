@@ -30,6 +30,7 @@ var Arc = angular.module('Arc', [
   'Profiler',
   'ArcUser',
   'IA',
+  'PM',
   'Common',
   'Property',
   'Discovery',

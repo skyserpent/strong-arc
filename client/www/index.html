@@ -21,8 +21,19 @@
     <a ui-sref="home"><img src="./images/strongloop.svg" alt="Strongloop logo" class="logo"></a>
   </div>
   <sl-app-selector></sl-app-selector>
-  <div class="navButtons">
+  <div class="global-nav-buttons">
     <ul>
+      <li>
+          <span class="dropdown" on-toggle="toggled(open)" data-id="StudioAccountDropdown">
+            <a href class="dropdown-toggle">
+              <span class="sl-icon sl-icon-play"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <div sl-pm-app-controller></div>
+
+            </ul>
+          </span>
+      </li>
       <li class="header-help-container">
         <a href="http://docs.strongloop.com/pages/viewpage.action?pageId=3179029" target="_new"
            title="documentation"><span class="sl-icon sl-icon-help"></span></a>
@@ -159,6 +170,13 @@
 <script src="./scripts/modules/model/model.controllers.js"></script>
 <script src="./scripts/modules/model/model.services.js"></script>
 <script src="./scripts/modules/model/model.directives.js"></script>
+
+<!-- pm -->
+<script src="./scripts/modules/pm/pm.module.js"></script>
+<script src="./scripts/modules/pm/pm.controllers.js"></script>
+<script src="./scripts/modules/pm/pm.services.js"></script>
+<script src="./scripts/modules/pm/pm.directives.js"></script>
+
 
 <!-- datasource -->
 <script src="./scripts/modules/datasource/datasource.module.js"></script>
