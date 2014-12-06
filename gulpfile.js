@@ -146,6 +146,10 @@ gulp.task('test-pm', function() {
   return gulp.src('process-manager/test/*.js', { read: false })
     .pipe(mocha());
 });
+gulp.task('test-deploy-local', function() {
+  return gulp.src('build-deploy/test/deploy.test.js', { read: false })
+    .pipe(mocha());
+});
 
 gulp.task('test-client-integration', function(callback) {
   var child = spawn(
